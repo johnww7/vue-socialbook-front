@@ -569,7 +569,7 @@ export default {
                 .catch(error => {
                     console.log("errors: " + error)
                 })
-
+            //userFollowing variable
             let userFollowing = this.follower_count.filter(elem => {
                console.log(elem.follower)
                if(elem.follower ===  this.user){
