@@ -14,6 +14,10 @@ export default defineConfig({
       }
     })
   ],
+  define: {
+    // enable hydration mismatch details in production build
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+  },
   server: {
     hmr:{
       overlay:false
