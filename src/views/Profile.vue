@@ -3,7 +3,7 @@
 	
 	<section>
 			<div class="feature-photo">
-				<figure><img src="src/assets/images/resources/timeline-1.jpg" alt=""></figure>
+				<figure><img src="/src/assets/images/resources/timeline-1.jpg" alt=""></figure>
 				<form>
 					<div class="add-btn">
 					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
@@ -151,7 +151,7 @@ export default {
 			console.log("username from route: " + username)
 
 			await axios
-				.get('http://127.0.0.1:8000/api/profile')
+				.get('http://127.0.0.1:8000/api/profile/')
 				.then(response =>{
 					console.log("what is profile: " + JSON.stringify(response))
 				})
