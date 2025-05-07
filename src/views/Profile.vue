@@ -3,7 +3,7 @@
 	
 	<section>
 			<div class="feature-photo">
-				<figure><img src="/src/assets/images/resources/timeline-1.jpg" alt=""></figure>
+				<figure><img v-bind:src="'http://127.0.0.1:8000/' + userProfile.profileimg" alt=""></figure>
 				<form>
 					<div class="add-btn">
 					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
@@ -41,7 +41,7 @@
 							<div class="timeline-info">
 								<ul>
 									<li class="admin-name">
-									  <h5 style="color: black;white-space: nowrap; width: 110px; font-size: 27px;"><b>@username</b><!--<i class="fa fa-check-circle" style="color: #48dbfb;" aria-hidden="true"></i>--></h5>
+									  <h5 style="color: black;white-space: nowrap; width: 110px; font-size: 27px;"><b>@{{ currentUser }}</b><!--<i class="fa fa-check-circle" style="color: #48dbfb;" aria-hidden="true"></i>--></h5>
 									  <!--<span>Group Admin</span>-->
 									</li>
 									<!--<li>
@@ -69,7 +69,8 @@
 		</section><!-- top area -->
 		<section>
 			<div class="bio">
-				Bio goes here...
+				{{ userProfile.bio }}
+				
 			</div>
 		</section>
 		
@@ -134,6 +135,7 @@ export default {
     name: 'Profile', 
 	data() {
         return {
+			currentUser: '',
             userProfile:[],
 			userPost:[],
             followerCount:[],
@@ -148,10 +150,11 @@ export default {
 	methods : {
 		async getProfile() {
 			const username = this.$route.params.user_name
+			this.currentUser = username
 			console.log("username from route: " + username)
 
 			await axios
-				.get('http://127.0.0.1:8000/api/profile/')
+				.get(`http://127.0.0.1:8000/api/profile/${username}`)
 				.then(response =>{
 					console.log("what is profile: " + JSON.stringify(response))
 					console.log("what is profile data: " + JSON.stringify(response.data))
