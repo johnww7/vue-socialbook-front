@@ -3,7 +3,10 @@
 	
 	<section>
 			<div class="feature-photo">
-				<figure><img v-bind:src="'http://127.0.0.1:8000/' + userProfile.profileimg" alt=""></figure>
+				<!-- <figure><img v-bind:src="'http://127.0.0.1:8000/' + userProfile.profileimg" alt=""></figure> -->
+				
+				<figure><img src="/src/assets/images/resources/timeline-1.jpg" alt=""></figure>
+
 				<form>
 					<div class="add-btn">
 					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
@@ -27,8 +30,10 @@
 						<div class="col-lg-2 col-sm-3">
 							<div class="user-avatar">
 								<figure>
-									<img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" style="height: 250px; width: 100%;" alt="">
-								<!--	<form class="edit-phto">
+									<!--<img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" style="height: 250px; width: 100%;" alt="">-->
+									<img v-bind:src="'http://127.0.0.1:8000/' + userProfile.profileimg" style="height: 250px; width: 100%;" alt="">
+
+									<!--	<form class="edit-phto">
 										<i class="fa fa-camera-retro"></i>
 										<label class="fileContainer">
 											<a href="#account-settings">Upload Profile Photo</a>
