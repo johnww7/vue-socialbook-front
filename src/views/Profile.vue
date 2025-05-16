@@ -7,7 +7,7 @@
 				
 				<figure><img src="/src/assets/images/resources/timeline-1.jpg" alt=""></figure>
 
-				<form>
+				<form  @submit.prevent="submitForm">
 					<div class="add-btn">
 					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
 					<span style="color: white; font-size: 27px;"><b>11 Post</b></span>
@@ -144,6 +144,9 @@ export default {
             userProfile:[],
 			userPost:[],
             followerCount:[],
+			userPostLength: 0,
+			userFollowers: 0,
+			userFollowing:''
         }
     }, 
     computed: {
@@ -179,6 +182,14 @@ export default {
                     console.log("errors: " + error)
                     //console.error(error.response.data)
                 })
+		},
+		async submitForm() {
+			await axios
+				.get()
+				>then()
+				.catch(error => {
+					console.log("errors: " + error)
+				})
 		}
 	},
 }

@@ -41,7 +41,7 @@
                         </div>
                         <a href="#"> Forgot Your Password? </a>
                     </div>-->
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Logout</button>
+                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Sign In</button>
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Not registered? <a href="/" class=""> Create a account </a></p>
                     </div>
