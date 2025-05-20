@@ -10,8 +10,14 @@
 				<form  @submit.prevent="submitForm">
 					<div class="add-btn">
 					<span style="color: white; font-size: 27px; margin-right: 520px;"><b><u><a href="/">Home</a></u></b></span>
-					<span style="color: white; font-size: 27px;"><b>11 Post</b></span>
-					<span style="color: white; font-size: 27px;"><b>1.7m followers</b></span>
+					
+					<span v-if="userPostLength === 0" style="color: white; font-size: 27px;"><b>No Post</b></span>
+					<span v-else-if="userPostLength === 1" style="color: white; font-size: 27px;"><b>{{ userPostLength }} Post</b></span>
+					<span v-else style="color: white; font-size: 27px;"><b>{{ userPostLength }} Posts</b></span>
+					
+					<span v-if="userFollowers === 0 || userFollowers === 1"style="color: white; font-size: 27px;"><b>{{ userFollowers}} follower</b></span>
+					<span v-else style="color: white; font-size: 27px;"><b> {{ userFollowers }} followers</b></span>
+
 					<span style="color: white; font-size: 27px;"><b>3.5k following</b></span>
 					<a href="" title="" data-ripple=""><button style="background-color: #ffc0cb; border: #ffc0cb;">Follow</button></a>
 					
@@ -185,8 +191,8 @@ export default {
 		},
 		async submitForm() {
 			await axios
-				.get()
-				>then()
+				.post('http://127.0.0.1:8000/api/follow')
+				.then()
 				.catch(error => {
 					console.log("errors: " + error)
 				})
