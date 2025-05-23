@@ -154,10 +154,14 @@ export default {
 			userFollowers: 0,
 			userFollowing:''
         }
-    }, 
-    computed: {
-        ...mapState(useAuthStore, ['getToken']),
     },
+	setup(){
+        const store = useAuthStore()
+        return { store }
+    }, 
+    /*computed: {
+        ...mapState(useAuthStore, ['getToken']),
+    },*/
 	mounted() {
 		this.getProfile()
 	},
@@ -190,9 +194,22 @@ export default {
                 })
 		},
 		async submitForm() {
+
+			let username = this.currentUser
+			console.log("whats profile user: " + username)
+			let follower = this.store.getUser
+            console.log("whats follower: " + follower)
+			 
+			const formData = {
+				follower: follower,
+				user: username
+			}
+
 			await axios
-				.post('http://127.0.0.1:8000/api/follow')
-				.then()
+				.post('http://127.0.0.1:8000/api/follow', formData)
+				.then(response => {
+					console.log("whats resposne: " + JSON.stringify(response))
+				})
 				.catch(error => {
 					console.log("errors: " + error)
 				})
