@@ -182,11 +182,17 @@ export default {
 					
 					this.userProfile = JSON.stringify(response.data.user_profile)
 					this.userPost = JSON.stringify(response.data.user_post)
-					this.followerCount = JSON.stringify(response.data.follower_count)
+					this.followerCount = response.data.follower_count
 				
 					console.log("what is userProfile: " + this.userProfile)
 					console.log("what is userPost: " + this.userPost)	
 					console.log("what is followerCount: " + this.followerCount)
+
+					//let tempfollowerCount = this.followerCount
+					for(let i=0; i < (this.followerCount).length; i++) {
+						console.log("what are elem 1: " + this.followerCount[i]['user'])
+						console.log("what are elem 2: " + this.followerCount[i]['follower'])
+					}
 				})
 				.catch(error => {
                     console.log("errors: " + error)
@@ -208,7 +214,7 @@ export default {
 			await axios
 				.post('http://127.0.0.1:8000/api/follow', formData)
 				.then(response => {
-					console.log("whats resposne: " + JSON.stringify(response))
+					console.log("whats resposne: " + JSON.stringify(response.data))
 				})
 				.catch(error => {
 					console.log("errors: " + error)
