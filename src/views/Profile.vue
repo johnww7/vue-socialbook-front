@@ -186,13 +186,33 @@ export default {
 				
 					console.log("what is userProfile: " + this.userProfile)
 					console.log("what is userPost: " + this.userPost)	
-					console.log("what is followerCount: " + this.followerCount)
+					console.log("what is followerCount: " + JSON.stringify(this.followerCount))
 
-					//let tempfollowerCount = this.followerCount
-					for(let i=0; i < (this.followerCount).length; i++) {
-						console.log("what are elem 1: " + this.followerCount[i]['user'])
-						console.log("what are elem 2: " + this.followerCount[i]['follower'])
+					let tempFollowerCount = 0
+					for(let elem of Object.keys(this.followerCount)) {
+						//for(let key of elem){
+							console.log("what is elem : " + JSON.stringify(elem) + ": " + JSON.stringify(this.followerCount[elem]))
+							if(this.followerCount[elem]['user'] === username ) {
+								tempFollowerCount++
+							}
+							
+							//console.log("what are elem 2: " + this.followerCount[i]['follower'])
+						//}
 					}
+					console.log("whats count: " + tempFollowerCount)
+
+					let tempFollowingCount = 0
+					for(let elem of Object.keys(this.followerCount)) {
+						//for(let key of elem){
+							console.log("what is elem : " + JSON.stringify(elem) + ": " + JSON.stringify(this.followerCount[elem]))
+							if(this.followerCount[elem]['follower'] === username ) {
+								tempFollowingCount++
+							}
+							
+							//console.log("what are elem 2: " + this.followerCount[i]['follower'])
+						//}
+					}
+					console.log("whats count: " + tempFollowingCount)
 				})
 				.catch(error => {
                     console.log("errors: " + error)
