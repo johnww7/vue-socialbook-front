@@ -18,7 +18,7 @@
 					<span v-if="userFollowers === 0 || userFollowers === 1"style="color: white; font-size: 27px;"><b>{{ userFollowers}} follower</b></span>
 					<span v-else style="color: white; font-size: 27px;"><b> {{ userFollowers }} followers</b></span>
 
-					<span style="color: white; font-size: 27px;"><b>3.5k following</b></span>
+					<span style="color: white; font-size: 27px;"><b>{{userFollowing}} following</b></span>
 					<a href="" title="" data-ripple=""><button style="background-color: #ffc0cb; border: #ffc0cb;">Follow</button></a>
 					
 					</div>
@@ -152,7 +152,7 @@ export default {
             followerCount:[],
 			userPostLength: 0,
 			userFollowers: 0,
-			userFollowing:''
+			userFollowing:0,
         }
     },
 	setup(){
@@ -200,7 +200,7 @@ export default {
 						//}
 					}
 					console.log("whats count: " + tempFollowerCount)
-
+					this.userFollowers = tempFollowerCount
 					let tempFollowingCount = 0
 					for(let elem of Object.keys(this.followerCount)) {
 						//for(let key of elem){
@@ -213,6 +213,7 @@ export default {
 						//}
 					}
 					console.log("whats count: " + tempFollowingCount)
+					this.userFollowing = tempFollowingCount
 				})
 				.catch(error => {
                     console.log("errors: " + error)
