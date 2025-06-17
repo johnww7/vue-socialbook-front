@@ -181,7 +181,7 @@ export default {
 					console.log("what is follower count: " + JSON.stringify(response.data.follower_count))				
 					
 					this.userProfile = JSON.stringify(response.data.user_profile)
-					this.userPost = JSON.stringify(response.data.user_post)
+					this.userPost = response.data.user_post
 					this.followerCount = response.data.follower_count
 				
 					console.log("what is userProfile: " + this.userProfile)
@@ -214,6 +214,21 @@ export default {
 					}
 					console.log("whats count: " + tempFollowingCount)
 					this.userFollowing = tempFollowingCount
+
+					/*let posts = JSON.stringify(this.userPost)
+					Object.values(posts).forEach((elem) => {
+						Object.entries(elem).forEach(([key, value]) => {
+							console.log(`${key}: ${value}`)
+						}) 
+					})*/
+					//console.log(this.userPost[0])
+					for(let elem of Object.keys(this.userPost)) {
+						console.log(this.userPost[elem])
+						/*this.userPost[elem].forEach((value) => {
+							console.log(this.userPost[elem] + ": " + elem)
+						})*/
+						
+					}
 				})
 				.catch(error => {
                     console.log("errors: " + error)
