@@ -222,13 +222,19 @@ export default {
 						}) 
 					})*/
 					//console.log(this.userPost[0])
+					let tempPostCount = 0
 					for(let elem of Object.keys(this.userPost)) {
-						console.log(this.userPost[elem])
+						console.log(this.userPost[elem].user)
+						if(this.userPost[elem].user === this.currentUser) {
+							tempPostCount++
+						}
 						/*this.userPost[elem].forEach((value) => {
 							console.log(this.userPost[elem] + ": " + elem)
 						})*/
 						
 					}
+					console.log("temp post count: " + tempPostCount)
+					this.userPostLength = tempPostCount
 				})
 				.catch(error => {
                     console.log("errors: " + error)
