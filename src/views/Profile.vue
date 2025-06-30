@@ -111,12 +111,14 @@
 							<div class="col-lg-6">
 								<div class="central-meta">
 									<ul class="photos">
-					
-										<li>
-											<a class="strip" href="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" style="height: 250px; width: 300px;" alt=""></a>
-										</li>
-
+										<div v-for="post in posts" :key="post.id">
+											<!---<div v-for="elem in post" :key="elem.id">-->
+											<li>
+												<a class="strip" :href="'http://127.0.0.1:8000/' + post.image" data-strip-group="mygroup" data-strip-group-options="loop: false">
+													<img v-bind:src="'http://127.0.0.1:8000/' + post.image" style="height: 250px; width: 300px;" alt=""></a>
+											</li>
+											<!--</div>-->
+										</div>
 		
 										
 									</ul>
@@ -149,6 +151,7 @@ export default {
 			currentUser: '',
             userProfile:[],
 			userPost:[],
+			posts:[],
             followerCount:[],
 			userPostLength: 0,
 			userFollowers: 0,
@@ -224,8 +227,9 @@ export default {
 					//console.log(this.userPost[0])
 					let tempPostCount = 0
 					for(let elem of Object.keys(this.userPost)) {
-						console.log(this.userPost[elem].user)
+						console.log(this.userPost[elem])
 						if(this.userPost[elem].user === this.currentUser) {
+							this.posts.push(this.userPost[elem])
 							tempPostCount++
 						}
 						/*this.userPost[elem].forEach((value) => {
@@ -234,6 +238,7 @@ export default {
 						
 					}
 					console.log("temp post count: " + tempPostCount)
+					console.log("what is user posts: " + JSON.stringify(this.posts))
 					this.userPostLength = tempPostCount
 				})
 				.catch(error => {
