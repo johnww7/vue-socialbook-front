@@ -19,7 +19,7 @@
 					<span v-else style="color: white; font-size: 27px;"><b> {{ userFollowers }} followers</b></span>
 
 					<span style="color: white; font-size: 27px;"><b>{{userFollowing}} following</b></span>
-					<a href="" title="" data-ripple=""><button style="background-color: #ffc0cb; border: #ffc0cb;">Follow</button></a>
+					<a href="" title="" data-ripple=""><button style="background-color: #ffc0cb; border: #ffc0cb;">{{buttonText}}</button></a>
 					
 					</div>
 				</form>
@@ -153,6 +153,7 @@ export default {
 			userPost:[],
 			posts:[],
             followerCount:[],
+			buttonText: '',
 			userPostLength: 0,
 			userFollowers: 0,
 			userFollowing:0,
@@ -218,13 +219,28 @@ export default {
 					console.log("whats count: " + tempFollowingCount)
 					this.userFollowing = tempFollowingCount
 
-					/*let posts = JSON.stringify(this.userPost)
-					Object.values(posts).forEach((elem) => {
-						Object.entries(elem).forEach(([key, value]) => {
-							console.log(`${key}: ${value}`)
-						}) 
-					})*/
-					//console.log(this.userPost[0])
+					console.log("what is followers Count: " + JSON.stringify(this.followerCount))
+					let loggedInUser = this.store.getUser
+					console.log("Whats logged in User: " + loggedInUser)
+					
+					let tempFollowerResult = []
+					for(let elem of Object.keys(this.followerCount)) {
+						//for(let key of elem){
+							console.log("what is elem : " + JSON.stringify(elem) + ": " + JSON.stringify(this.followerCount[elem]))
+							if(this.followerCount[elem]['user'] === loggedInUser && thisfollowerCount[elem]['follower'] === this.currentUser) {
+								tempFollowerResult.push(this.followerCount[elem])
+							}
+							
+					}
+					console.log("whats temp Follower Result: " + tempFollowerResult)
+					
+					if (tempFollowerResult.length > 0) {
+						this.buttonText = "Unfollow"
+					} 
+					else {
+						this.buttonText = "Follow"
+					}
+
 					let tempPostCount = 0
 					for(let elem of Object.keys(this.userPost)) {
 						console.log(this.userPost[elem])
