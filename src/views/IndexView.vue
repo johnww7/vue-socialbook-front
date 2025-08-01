@@ -497,7 +497,7 @@ export default {
                 })
             //userFollowing variable
             let userFollowing = this.follower_count.filter(elem => {
-               console.log(elem.follower)
+               console.log("What does this output: " + elem.follower)
                if(elem.follower ===  this.user){
                    console.log("whats this: " + JSON.stringify(elem))
                    return elem

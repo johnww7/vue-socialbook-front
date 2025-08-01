@@ -19,7 +19,8 @@
 					<span v-else style="color: white; font-size: 27px;"><b> {{ userFollowers }} followers</b></span>
 
 					<span style="color: white; font-size: 27px;"><b>{{userFollowing}} following</b></span>
-					<a href="" title="" data-ripple=""><button style="background-color: #ffc0cb; border: #ffc0cb;">{{buttonText}}</button></a>
+					<a href="" title="" data-ripple=""><button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">Follow</button></a>
+					<!--<a data-ripple=""><button type="submit" style="background-color: #ffc0cb; border: #ffc0cb;">{{buttonText}}</button></a>-->
 					
 					</div>
 				</form>
@@ -55,22 +56,7 @@
 									  <h5 style="color: black;white-space: nowrap; width: 110px; font-size: 27px;"><b>@{{ currentUser }}</b><!--<i class="fa fa-check-circle" style="color: #48dbfb;" aria-hidden="true"></i>--></h5>
 									  <!--<span>Group Admin</span>-->
 									</li>
-									<!--<li>
-										<a class="" href="javascript:void(0)" title="" data-ripple="">Go live!</a>
-										<a class="" href="javascript:void(0)" title="" data-ripple="">Music</a>
-										<a class="" href="emporium/index-3.html" title="" data-ripple="">Emporium</a>
-										<a class="" href="fitness/index.html" title="" data-ripple="">Health Inspection</a>
-										<a class="" href="settings/account-setting.html" title="" data-ripple="">Settings</a>
-										<a class="" href="javascript:void(0)" title="" data-ripple="">Upload</a>
-										<a class="" href="time-line.html" title="" data-ripple="">time line</a>
-										<a class="" href="timeline-photos.html" title="" data-ripple="">Photos</a>
-										<a class="" href="timeline-videos.html" title="" data-ripple="">Videos</a>
-										<a class="" href="timeline-friends.html" title="" data-ripple="">Friends</a>
-										<a class="" href="timeline-groups.html" title="" data-ripple="">Groups</a>
-										<a class="" href="about.html" title="" data-ripple="">about</a>
-										<a class="" href="#" title="" data-ripple="">more</a>
-
-									</li>-->
+							
 								</ul>
 							</div>
 						</div>
@@ -167,7 +153,8 @@ export default {
         ...mapState(useAuthStore, ['getToken']),
     },*/
 	mounted() {
-		this.getProfile()
+		this.getProfile(),
+		this.submitForm()
 	},
 	methods : {
 		async getProfile() {
@@ -223,7 +210,7 @@ export default {
 					let loggedInUser = this.store.getUser
 					console.log("Whats logged in User: " + loggedInUser)
 					
-					let tempFollowerResult = []
+					/*let tempFollowerResult = []
 					for(let elem of Object.keys(this.followerCount)) {
 						//for(let key of elem){
 							console.log("what is elem : " + JSON.stringify(elem) + ": " + JSON.stringify(this.followerCount[elem]))
@@ -239,7 +226,7 @@ export default {
 					} 
 					else {
 						this.buttonText = "Follow"
-					}
+					}*/
 
 					let tempPostCount = 0
 					for(let elem of Object.keys(this.userPost)) {
