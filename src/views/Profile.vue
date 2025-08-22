@@ -66,7 +66,7 @@
 		</section><!-- top area -->
 		<section>
 			<div class="bio">
-				{{ userProfile.bio }}
+				{{ userProfile.bio }} Hello
 				
 			</div>
 		</section>
@@ -80,7 +80,7 @@
 							<div class="col-lg-3">
 								<aside class="sidebar static">
 									
-									
+									What is this
 									
 								</aside>
 							</div><!-- sidebar -->

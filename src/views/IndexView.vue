@@ -468,7 +468,7 @@ export default {
                 .get("http://127.0.0.1:8000/api/user-suggestion")
                 .then(response =>{
                     console.log("Whats response: " + JSON.stringify(response.data))
-                    console.log("Whats response: " + response.data.followers)
+                    console.log("Whats response: " + JSON.stringify(response.data.followers))
                     const res = response.data
                     for (const property in res) {
                         console.log(`${property}: ${res[property]}`)
@@ -495,7 +495,10 @@ export default {
                 .catch(error => {
                     console.log("errors: " + error)
                 })
+
+            console.log("Whats followers from api call: " + JSON.stringify(followers))
             //userFollowing variable
+            console.log("What is this.follower_count" + JSON.stringify(this.follower_count))
             let userFollowing = this.follower_count.filter(elem => {
                console.log("What does this output: " + elem.follower)
                if(elem.follower ===  this.user){
