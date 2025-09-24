@@ -37,7 +37,7 @@
 						<div class="col-lg-2 col-sm-3">
 							<div class="user-avatar">
 								<figure>
-									<!--<img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" style="height: 250px; width: 100%;" alt="">-->
+									<!-- Need to fix!!!! <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" style="height: 250px; width: 100%;" alt="">-->
 									<img v-bind:src="'http://127.0.0.1:8000/' + userProfile.profileimg" style="height: 250px; width: 100%;" alt="">
 
 									<!--	<form class="edit-phto">

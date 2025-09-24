@@ -449,6 +449,8 @@ export default {
                     console.log("errors: " + error)
                 })
         },
+
+        //Function creates users for Users You can Follow
         async userSuggestion(){
 
           /*  let userFollowing = this.follower_count.filter(elem => {
@@ -577,6 +579,7 @@ export default {
             let userFollowingList = []
             let userFeed = []
             console.log("whats user: " + this.user) 
+            console.log("whats feed follower count: " + this.follower_count)
             let userFollowing = this.follower_count.filter(elem => {
                console.log(elem.follower)
                if(elem.follower ===  this.user){
