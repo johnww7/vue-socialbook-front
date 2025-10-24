@@ -488,7 +488,7 @@ export default {
                         }
                         else {
                             users = res[property]
-                            console.log("users: " + users)
+                            console.log("users: " + JSON.stringify(users))
                         }
                         //console.log("property: " + res[property].)
                        console.log(res[property])
@@ -500,6 +500,7 @@ export default {
 
             console.log("Whats followers from api call: " + JSON.stringify(followers))
             //userFollowing variable
+            console.log("Whats this.user: " + this.user)
             console.log("What is this.follower_count" + JSON.stringify(this.follower_count))
             let userFollowing = this.follower_count.filter(elem => {
                console.log("What does this output: " + elem.follower)
@@ -522,18 +523,31 @@ export default {
                 userFollowingAll.push(userList[0])
             })
 
-            console.log("userFollowingAll: " + JSON.stringify(userFollowingAll))
+            console.log("userFollowingAll: " + JSON.stringify(userFollowingAll) + " : " +typeof(userFollowingAll))
             //new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
+            //-------Need to work here---------------
             console.log('whats users: ' + JSON.stringify(users) + " whats its type: " + typeof(users))
             let newSuggestionList = []
             for(const elem  in users) {
                 console.log("prop: " + elem + "what data: " + JSON.stringify(users[elem]))
-                userFollowingAll.forEach((data) => {
+                
+                if(Object.keys(userFollowingAll).length === 0) {
+                    newSuggestionList.push(users[elem])
+                }
+                else {
+                    for(const data  in userFollowingAll) {
+                        console.log("whats data: " + data)
+                        if(users[elem].username !==  data.username) {
+                            newSuggestionList.push(users[elem])
+                        }
+                    }
+                }
+                /*userFollowingAll.forEach((data) => {
                     console.log("whats data: " + JSON.stringify(data))
                     if(users[elem].username !==  data.username) {
                         newSuggestionList.push(users[elem])
                     }
-                })
+                })*/
             }
             console.log("newSuggestionList: " + JSON.stringify(newSuggestionList))
 
