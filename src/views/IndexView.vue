@@ -532,7 +532,11 @@ export default {
                 console.log("prop: " + elem + "what data: " + JSON.stringify(users[elem]))
                 
                 if(Object.keys(userFollowingAll).length === 0) {
+                    /*if(users[elem].username !==  data.username){ 
+                        newSuggestionList.push(users[elem])
+                    }*/
                     newSuggestionList.push(users[elem])
+
                 }
                 else {
                     for(const data  in userFollowingAll) {
@@ -595,7 +599,7 @@ export default {
             console.log("whats user: " + this.user) 
             console.log("whats feed follower count: " + this.follower_count)
             let userFollowing = this.follower_count.filter(elem => {
-               console.log(elem.follower)
+               console.log(elem)
                if(elem.follower ===  this.user){
                    console.log("whats this: " + JSON.stringify(elem))
                    return elem
