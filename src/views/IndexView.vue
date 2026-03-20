@@ -224,11 +224,21 @@
                             </div>
     
                         </div>-->
-                        <!--<Post v-bind:userFeed="userFeed"/>-->
+                        <!--<Post v-bind:userFeed="userFeed"/>
                         <Post v-for="userPost in userFeed" v-bind:key="userPost.id" v-bind:userFeed="userPost"/> 
+                        -->
+                        <!-- Check if userFeed exists and has elements, and each userPost is valid before rendering -->
+                        <template v-if="userFeed && userFeed.length">
+                        <Post 
+                            v-for="userPost in userFeed" 
+                            :key="userPost?.id" 
+                            :userFeed="userPost"
+                            v-if="userPost && userPost.id"
+                        />
+                        </template>
 
                         
-                        <!-- Load more-->
+                        <!--  Load more-->
                         <!--<div class="flex justify-center mt-6" id="toggle" hidden>
                             <a href="#"
                                 class="bg-white  font-semibold my-3 px-6 py-2 rounded-full shadow-md  ">
@@ -614,11 +624,13 @@ export default {
                 //console.log(elem.user)
             })
             console.log("user following list: " + userFollowingList)
-
+            console.log("What is in this.posts: " + JSON.stringify(this.posts))
+//Work on userfeed here.
             userFollowingList.forEach((username) => {
                 console.log("user name: " + username)
                 let feedLists = this.posts.filter((elem) => {
-                    console.log("posts: " + JSON.stringify(elem.user))
+                    console.log("posts: " + JSON.stringify(elem))
+                    console.log("whats elem.user: " + JSON.stringify(elem.user))
                     if(elem.user === username) {
                         return elem
                     }
