@@ -228,12 +228,21 @@
                         <Post v-for="userPost in userFeed" v-bind:key="userPost.id" v-bind:userFeed="userPost"/> 
                         -->
                         <!-- Check if userFeed exists and has elements, and each userPost is valid before rendering -->
-                        <template v-if="userFeed && userFeed.length">
+                        <!--<template v-if="userFeed && userFeed.length">
                         <Post 
                             v-for="userPost in userFeed" 
                             :key="userPost?.id" 
                             :userFeed="userPost"
                             v-if="userPost && userPost.id"
+                        />
+                        </template> -->
+
+                        <template v-for="userPost in userFeed" >
+                        <Post 
+                            v-if="userPost && userPost.id"
+                            :key="userPost?.id" 
+                            :userFeed="userPost"
+                           
                         />
                         </template>
 
@@ -600,6 +609,8 @@ export default {
             })
 
             console.log("whats username profile list: " + JSON.stringify(usernameProfileList))
+            console.log("whats username profile list: " + JSON.stringify(usernameProfileList.slice(0,4)))
+
             this.suggestionsUserList = usernameProfileList.slice(0,4)
             //console.log("suggestion of Users list: " + JSON.stringify(this.suggestionsUserList))
         },
@@ -642,6 +653,9 @@ export default {
             console.log("whats user Feed: " + JSON.stringify(userFeed))
 
             this.userFeed = userFeed
+            if(this.userFeed.length === 0 ){
+                console.log("this is null")
+            }
             console.log("whats my feed: " + JSON.stringify(this.userFeed))
         },
         logout() {
